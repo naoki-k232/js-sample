@@ -6,7 +6,7 @@ const onClickAdd = () => {
 
     // div生成
     const div = document.createElement("div");
-    div.className = "list-low";
+    div.className = "list-row";
     // console.log(div);
 
     // li生成
@@ -30,14 +30,18 @@ const onClickAdd = () => {
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "削除";
     deleteBtn.addEventListener("click", () => {
-        alert("削除");
+        // 押された削除ボタンの親タグ(div)を未完了リストから削除
+        const deleteTarget = deleteBtn.closest("li");
+        document.getElementById("incomplete-list").removeChild(deleteTarget);
+        // console.log(deleteTarget);
+        // alert("削除");
     });
 
     // divタグの子要素に各要素を設定
     li.appendChild(div);
     div.appendChild(p);
-    p.appendChild(completeBtn);
-    p.appendChild(deleteBtn);
+    div.appendChild(completeBtn);
+    div.appendChild(deleteBtn);
     // console.log(li);
 
     // 未完了のリストに追加
